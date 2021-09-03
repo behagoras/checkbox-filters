@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Filters from "./components/Filters";
+import Movies from "./components/Movies";
+import genres from "./mocks/genres";
+const Container = styled.div`
+  padding: 32px;
+`;
 
 function App() {
+  const [filters, setFilters] = useState([]);
+  console.log({ filters });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      {/* <pre>{JSON.stringify({ filters }, null, 2)}</pre> */}
+      <Filters genres={genres} setFilters={setFilters} filters={filters} />
+      <Movies filters={filters} />
+    </Container>
   );
 }
 
